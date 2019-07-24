@@ -32,39 +32,14 @@ public class LearnActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        Random ran = new Random();
-
-        int num1 = ran.nextInt(300) + 100;
-        int num2 = ran.nextInt(299) + 1;
-        int sign = ran.nextInt(2);
-
-        txtWord1.setText(""+num1);
-        if(sign==0){
-            txtWord2.setText("+");
-        }else{
-            txtWord2.setText("-");
-        }
-        txtWord3.setText(""+num2);
+        cal(txtWord1,txtWord2,txtWord3);
 
         btnNext.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 if (cnt < 5) {
                     cnt++;
-                    Random ran = new Random();
-
-                    int num1 = ran.nextInt(300) + 100;
-                    int num2 = ran.nextInt(299) + 1;
-                    int sign = ran.nextInt(2);
-
-                    txtWord1.setText(""+num1);
-                    if(sign==0){
-                        txtWord2.setText("+");
-                    }else{
-                        txtWord2.setText("-");
-                    }
-                    txtWord3.setText(""+num2);
-
+                    cal(txtWord1,txtWord2,txtWord3);
 
                 } else {
                     Toast.makeText(LearnActivity.this, "마지막 문제입니다.", Toast.LENGTH_SHORT).show();
@@ -80,6 +55,22 @@ public class LearnActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public static void cal(TextView txtWord1,TextView txtWord2,TextView txtWord3){
+        Random ran = new Random();
+
+        int num1 = ran.nextInt(300) + 100;
+        int num2 = ran.nextInt(299) + 1;
+        int sign = ran.nextInt(2);
+
+        txtWord1.setText(""+num1);
+        if(sign==0){
+            txtWord2.setText("+");
+        }else{
+            txtWord2.setText("-");
+        }
+        txtWord3.setText(""+num2);
     }
 
 }
