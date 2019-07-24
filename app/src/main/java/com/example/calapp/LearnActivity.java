@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class LearnActivity extends AppCompatActivity {
     private int cnt = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,20 @@ public class LearnActivity extends AppCompatActivity {
         final Button btnInit = findViewById(R.id.btnInit);
 
         Intent intent = getIntent();
+
+        Random ran = new Random();
+
+        int num1 = ran.nextInt(300) + 100;
+        int num2 = ran.nextInt(299) + 1;
+        int sign = ran.nextInt(2);
+
+        txtWord1.setText(""+num1);
+        if(sign==0){
+            txtWord2.setText("+");
+        }else{
+            txtWord2.setText("-");
+        }
+        txtWord3.setText(""+num2);
 
         btnNext.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -51,7 +66,6 @@ public class LearnActivity extends AppCompatActivity {
                     txtWord3.setText(""+num2);
 
 
-
                 } else {
                     Toast.makeText(LearnActivity.this, "마지막 문제입니다.", Toast.LENGTH_SHORT).show();
                 }
@@ -67,4 +81,5 @@ public class LearnActivity extends AppCompatActivity {
         });
 
     }
+
 }
