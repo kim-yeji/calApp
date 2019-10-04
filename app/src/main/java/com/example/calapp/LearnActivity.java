@@ -35,22 +35,15 @@ public class LearnActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        cal(txtWord1,txtWord2,txtWord3);
+        // 초기값
+        setNum(txtWord1, txtWord2, txtWord3);
 
         btnNext.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 if (cnt < 5) {
+                    setNum(txtWord1, txtWord2, txtWord3);
                     cnt++;
-                    int tmp = cal(txtWord1,txtWord2,txtWord3);
-                    int tmp2 = Integer.parseInt(txtAnswer.getText().toString());
-                    if(tmp==tmp2){
-                        txtResult.setText("정답입니다.");
-                    }else{
-                        txtResult.setText("틀렸습니다.");
-                    }
-
-
                 } else {
                     Toast.makeText(LearnActivity.this, "마지막 문제입니다.", Toast.LENGTH_SHORT).show();
                 }
@@ -58,10 +51,22 @@ public class LearnActivity extends AppCompatActivity {
         });
 
         btnAns.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v) {
+                if(txtAnswer.getText() == null || "".equals(txtAnswer.getText().toString())){
+                    Toast.makeText(LearnActivity.this, "답을 입력하세요.", Toast.LENGTH_SHORT).show();
+                }else {
+                    // 내가 쓴 답
+                    int answer = Integer.parseInt(txtAnswer.getText().toString());
+                    // 결과값
+                    int result = cal(txtWord1.getText().toString(), txtWord3.getText().toString(), txtWord2.getText().toString());
 
+                    if (answer == result) {
+                        txtResult.setText("정답입니다.");
+                    } else {
+                        txtResult.setText("틀렸습니다.");
+                    }
+                }
             }
         });
 
@@ -75,11 +80,12 @@ public class LearnActivity extends AppCompatActivity {
 
     }
 
-    public static int cal(TextView txtWord1,TextView txtWord2,TextView txtWord3){
+    // 숫자 셋팅
+    public static void setNum(TextView txtWord1,TextView txtWord2,TextView txtWord3){
         Random ran = new Random();
 
-        int num1 = ran.nextInt(300) + 100;
-        int num2 = ran.nextInt(199) + 1;
+        int num1 = ran.nextInt(20) + 10;
+        int num2 = ran.nextInt(9) + 1;
         int sign = ran.nextInt(2);
 
         txtWord1.setText(""+num1);
@@ -89,8 +95,17 @@ public class LearnActivity extends AppCompatActivity {
             txtWord2.setText("-");
         }
         txtWord3.setText(""+num2);
+    }
 
-        return num1+num2;
+    // 숫자 계산
+    public static int cal(String num1, String num2, String op){
+        int a = Integer.parseInt(num1);
+        int b = Integer.parseInt(num2);
+        if("+".equals(op)){
+            return a + b;
+        }else{
+            return a - b;
+        }
     }
 
 }

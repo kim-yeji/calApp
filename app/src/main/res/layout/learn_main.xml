@@ -69,8 +69,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="답을 적어주세요" />
+                android:inputType="number"
+                android:hint="답을 입력하세요." />
 
         </LinearLayout>
 
@@ -80,13 +80,13 @@
             android:layout_weight="1.5"
             android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txtResult"
-            android:textSize="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+            <TextView
+                android:id="@+id/txtResult"
+                android:textSize="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
@@ -98,7 +98,7 @@
                 android:id="@+id/btnAns"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="정답"
+                android:text="정답확인하기"
                 android:padding="20dp"
                 android:textSize="24dp"
                 android:layout_weight="1" />
@@ -110,14 +110,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1.6"
             android:orientation="horizontal">
-        <Button
-            android:id="@+id/btnNext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="다음"
-            android:padding="20dp"
-            android:textSize="24dp"
-            android:layout_weight="1" />
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="다음"
+                android:padding="20dp"
+                android:textSize="24dp"
+                android:layout_weight="1" />
         </LinearLayout>
         <Button
             android:id="@+id/btnInit"
